@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>College Hunt</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    
+
+    <style>
+        body {
+             padding: 0;
+             align-items: center;
+             background-color: #f0f0f0;
+            }
+            .container {
+          background-color: rgb(6, 118, 210);
+          max-width: 500px;
+          padding: 20px;
+          color: #fff;
+          border-radius: 30px;
+          text-align: center;
+          margin-top: -40px;
+          align-content:center;
+        }
+         #results {
+         margin-top: 10px;
+         list-style: none;
+         padding: 0;
+        }
+       
+       #results li {
+           margin-bottom: 10px;
+           padding: 10px;
+           border: 1px solid #ccc;
+           background-color: #f9f9f9;
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+          }
+       
+              #results li .institute {
+                  font-weight: bold;
+                  color: #06fa37;
+                 }
+          
+              #results li .program {
+                  color: #6603fa;
+                }
+          
+              .table-container {
+                  margin-top: 30px;
+                  max-width: 600px;
+                 
+                 }
+          
+              .table-container table {
+                  width: 100%;
+                  border-collapse: collapse;
+                } 
+          
+              .table-container th {
+                  padding: 10px;
+                  background-color: #333;
+                  color: #fff;
+                  text-align: center;
+                }
+          
+              .table-container td {
+                  padding: 10px;
+                  background-color: hwb(320 89% 9%);
+                  color: #010902;
+                }
+             
+          * {
+              box-sizing:border-box;
+            }
+        
+           
+        
+            header {
+              background-color: #2a85e8;
+              color: white;
+              padding: 15px;
+              text-align: center;
+            }
+        
+            nav {
+              background-color: #f4f4f4;
+              padding: 15px;
+            }
+        
+            nav ul {
+              list-style-type: none;
+              margin: 0;
+              padding: 0;
+              display: flex;
+              justify-content: center;
+            }
+        .logo img {
+          height: 120px;
+          margin-right: px;
+          padding-bottom: 30px;
+          padding-left: 30px;
+          position: absolute; 
+          top: 40px; 
+          left: 0;
+         
+        }
+        
+            nav ul li {
+              margin:  0  10px;
+            }
+        
+            nav ul li a {
+              text-decoration:underline;
+              color: #2a85e8;
+              font-weight: bold;
+            }
+        
+            section {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-direction: column;
+              height: 110vh;
+            }
+        
+            .left-image img {
+              max-width: 60vb;
+              height: 50vb;
+            }
+        
+            .container-portal {
+              height: 100px;
+              
+              width: 500px;
+              text-align:center;
+              background-color: #cbcbcc;
+              border-radius: 15px;
+              box-shadow: 0 0 10px rgba(14, 1, 1, 0.2);
+              margin-top: 30px;
+              margin-left: 68%;       
+            }
+        
+            h1 {
+              text-align: center;
+              font-style: inherit;
+              margin-top: 50px; ;
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+             
+            .academic-programme {
+        background-color: rgb(3, 234, 83);
+        max-width: 600px;
+        padding: 10px;
+        color: #fff;
+        border-radius: 20px;
+        text-align: center;
+        margin: 100px auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      
+      .academic-programme a {
+        color: #fff;
+        font-weight: bold;
+        text-decoration: none;
+      }
+      
+            label {
+              display:block;
+              margin-bottom: 10px;
+            }
+        
+            input[type="text"],
+            input[type="number"],
+            select {
+              width: 100%;
+              padding: 10px;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+              box-sizing: border-box;
+              margin-bottom: 10px;
+            }
+            input[type="submit"] {
+              background-color: rgb(2, 19, 2);
+              color: white;
+              border: none;
+              padding: 10px 20px;
+              cursor: pointer;
+              border-radius: 4px;
+              font-weight: bold;
+            }
+        
+            input[type="submit"]:hover {
+              background-color: hwb(111 0% 61%);
+              
+            }
+        
+            .image-container {
+              text-align: center;
+              margin-top: 50px;
+            margin-bottom: 50px;
+             }
+             .row {
+          display:flex;
+          margin-bottom: 20px;
+          }
+      
+        .clm {
+          flex: 1;
+          text-align: center;
+          padding: 10px;
+        }
+        
+        .clm img {
+          height: 100px;
+        }
+        
+        .clm p {
+          margin-top: 5px;
+        }
+        .hd {
+             margin-top: 120px;   
+        }
+        
+        .logoname {
+  color: whitesmoke; 
+  font-size: 50px; 
+  font-weight: bold; 
+
+}
+
+       
+          
+        
+        
+          </style>
+</head>
+<body>
+    <header>
+        <h1 class="logoname">College Hunt</h1>
+        <p >Your College Search Destination</p>
+        <div class="logo">
+          <img src="image/logo.png" alt="Logo">
+        </div>
+      </header>
+    
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="https://www.nirfindia.org/2023/EngineeringRanking.html">Colleges</a></li>
+          <li><a href="https://www.nirfindia.org/2023/OverallRanking.html">Rankings</a></li>
+          <li><a href="#">Resources</a></li>
+          <li><a href="#">About Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="row">
+        <div class="col-lg-6 col-md-12">
+            <div class="container-portal">
+          <h1 class="academic-programme"><a href="college.html">Know your college or branch</a></h1>
+            </div>  
+        </div>
+      </div>
+
+      <section>
+        <div class=" col-lg-6 col-md-12">
+           <div class="container">
+            <h1>College Prediction Portal</h1>
+            <form id="searchForm">
+                <div class="form-group">
+                    <label for="closingRank">All India Rank:</label>
+                    <input type="text" class="form-control" id="closingRank" name="closingRank" required placeholder="ENTER YOUR AIR OR CATEGORY RANK">
+                </div>
+
+                <div class="form-group">
+                    <label for="year">Year:</label>
+                    <select class="form-control" id="year" name="year" required>
+                        <option value="">Select Year</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="round">Round:</label>
+                    <select class="form-control" id="round" name="round" required>
+                        <option value="">Select Round</option>
+                        <option value="1">Round 1</option>
+                        <option value="2">Round 2</option>
+                        <option value="3">Round 3</option>
+                        <option value="4">Round 4</option>
+                        <option value="5">Round 5</option>
+                        <option value="6">Round 6</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="seattype">Category:</label>
+                    <select class="form-control" id="seattype" name="seattype" required>
+                        <option value="">Select Category</option>
+                        <option value="OPEN">General</option>
+                        <option value="OBC-NCL">OBC</option>
+                        <option value="SC">SC</option>
+                        <option value="ST">ST</option>
+                        <option value="OPEN (PwD)">genral(pwd)</option>
+                        <option value="OBC-NCL (PwD)">OBC(pwd)</option>
+                        <option value="SC (PwD)">SC(pwd)</option>
+                        <option value="ST (PwD)">ST(pwd)</option>
+                        <!-- Add more options if needed -->
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+
+            <div id="results"></div>
+        </div>
+   
+
+    
+        
+        </div>
+      </div>
+      </section>
+<h1 class="hd">MORE ANALYSIS</h1>
+  <div class="row">
+    <div class="clm"><a href="popularbranch.html">
+        <img src="image/branch.png" alt="Image Description">
+        <p>BRANCH WISE ANALYSIS</p>
+      
+      </a></div>
+    <div class="clm"><a href="category.html">
+        <img src="image/catogry.jpg" alt="Image Description">
+        <p>catogry-wise analysis</p>
+        
+        
+        
+      </a></div>
+     
+    <div class="clm"><a href="seatallotmentinstitute.html">
+        <img src="image/collages.png" alt="Image Description">
+        <p>most popular collages</p>
+      </a></div>
+    <div class="clm"><a href="seatallotmentperround.html">
+        <img src="image/round.png" alt="Image Description">
+        <p>Round-Wise analysis</p>
+      </a></div>
+    <div class="clm"><a href="yearwiseallotment.html">
+        <img src="image/state.png" alt="Image Description">
+        <p>Year wise analysis</p>
+      </a></div>
+  </div>
+
+    <script>
+       $(document).ready(function() {
+  // Handle form submission
+  $('form').submit(function(event) {
+    event.preventDefault();
+
+    // Get the input values from the form
+    const closingRank = $('#closingRank').val();
+    const year = $('#year').val();
+    const round = $('#round').val();
+    const seattype = $('#seattype').val();
+
+    // Open a new tab or window with the search results page
+    const url = `/results?closingRank=${closingRank}&year=${year}&round=${round}&seattype=${seattype}`;
+    window.open(url, '_blank');
+  });
+});
+
+
+                
+                // Make an AJAX request to the search endpoint
+                $.get('/search', { closingRank, year, round, seattype }, function(data) {
+                    // Clear the previous search results
+                    $('#resultsTable tbody').empty();
+
+                    // Display the search results
+                    if (data.length > 0) {
+                        data.forEach(function(college) {
+                            const institute = college.institute;
+                            const program = college.academicProgramName;
+
+                            const row = $('<tr>');
+                            const instituteCell = $('<td>').text(institute);
+                            const programCell = $('<td>').text(program);
+                            row.append(instituteCell).append(programCell);
+                            $('#resultsTable tbody').append(row);
+                        });
+                    } else {
+                        const message = $('<tr>').html('<td colspan="2">No colleges found.</td>');
+                        $('#resultsTable tbody').append(message);
+                    }
+                });
+            
+    
+    </script>
+</body>
+</html>
+

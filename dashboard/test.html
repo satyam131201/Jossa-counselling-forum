@@ -1,0 +1,34 @@
+<div class="clm">
+    <a href="category.html" id="category-link">
+      <img src="image/category.jpg" alt="Image Description" id="category-image">
+      <p>Category-wise Analysis</p>
+    </a>
+  </div>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var categoryLink = document.getElementById("category-link");
+      var categoryOptions = document.createElement("div");
+      categoryOptions.id = "category-options";
+  
+      var yearDropdown = document.createElement("select");
+      yearDropdown.id = "year-dropdown";
+  
+      for (var year = 2016; year <= 2022; year++) {
+        var option = document.createElement("option");
+        option.value = year;
+        option.text = year;
+        yearDropdown.appendChild(option);
+      }
+  
+      categoryOptions.appendChild(yearDropdown);
+      categoryLink.appendChild(categoryOptions);
+  
+      yearDropdown.addEventListener("change", function() {
+        var selectedYear = yearDropdown.value;
+        var href = "category.html?year=" + selectedYear;
+        window.location.href = href;
+      });
+    });
+  </script>
+  

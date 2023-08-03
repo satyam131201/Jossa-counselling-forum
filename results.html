@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+
+<style>
+     #results {
+        margin-top: 30px;
+        list-style: none;
+        padding: 0;
+    }
+
+    #results li {
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        background-color: #f9f9f9;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #results li .institute {
+        font-weight: bold;
+        color: #06fa37;
+    }
+
+    #results li .program {
+        color: #6603fa;
+    }
+
+    .table-container {
+        margin-top: 30px;
+    }
+
+    .table-container table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .table-container th {
+        padding: 10px;
+        background-color: #333;
+        color: #fff;
+        text-align: left;
+    }
+
+    .table-container td {
+        padding: 10px;
+        background-color: #914689;
+        color: #10f541;
+    }
+    
+    .navbar {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+    }
+    
+    .navbar a {
+        color: #fff;
+        text-decoration: none;
+        margin-right: 10px;
+    }
+    
+    .navbar a:hover {
+        color: #f9f9f9;
+    }
+</style>
+
+<div class="navbar">
+    <a href="index.html">Home</a>
+</div>
+
+<div class="container">
+    <h1>Search Results</h1>
+    <div id="results"></div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        // Retrieve the search parameters from the URL query string
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const closingRank = urlParams.get('closingRank');
+        const year = urlParams.get('year');
+        const round = urlParams.get('round');
+        const seattype = urlParams.get('seattype');
+
+        // Make an AJAX request to the search endpoint
+        $.get('/search', { closingRank, year, round, seattype }, function(data) {
+            // Clear the previous search results
+            $('#results').empty();
+
+            // Display the search results
+            if (data.length > 0) {
+                const resultList = $('<ul>');
+                data.forEach(function(college) {
+                    const institute = college.institute;
+                    const program = college.academicProgramName;
+
+                    const listItem = $('<li>').text(`Institute: ${institute}, Program: ${program}`);
+                    resultList.append(listItem);
+                });
+                $('#results').append(resultList);
+            } else {
+                $('#results').text('No colleges found.');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
